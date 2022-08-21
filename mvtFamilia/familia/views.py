@@ -24,10 +24,13 @@ def hijo(request):
     return HttpResponse(mensaje_hijo) 
 
 def plantilla_html(request):
+
+    fecha=datetime.datetime.today()
+    diccionario={"fecha":fecha,}
     mihtml=open("C:/Users/Lucho/Desktop/MVT_PROYECTO/mvtFamilia/Plantillas/template1.html")
     plantilla=Template(mihtml.read())
     mihtml.close()
-    contexto=Context()
+    contexto=Context(diccionario)
     documento=plantilla.render(contexto)
     return HttpResponse(documento)
     
